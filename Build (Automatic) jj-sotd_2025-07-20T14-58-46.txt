@@ -1,0 +1,21 @@
+
+Showing Recent Issues
+
+Prepare build
+error: Multiple commands produce '/Users/jonas/Library/Developer/Xcode/DerivedData/jj-sotd-fiybdioifkqotfbtfcvtaqdhndcs/Build/Products/Debug-iphonesimulator/jj-sotd.app/Info.plist'
+    note: Target 'jj-sotd' (project 'jj-sotd') has copy command from '/Users/jonas/Code/IOS/jj-sotd/jj-sotd-xcode/jj-sotd/Info.plist' to '/Users/jonas/Library/Developer/Xcode/DerivedData/jj-sotd-fiybdioifkqotfbtfcvtaqdhndcs/Build/Products/Debug-iphonesimulator/jj-sotd.app/Info.plist'
+    note: Target 'jj-sotd' (project 'jj-sotd') has process command with output '/Users/jonas/Library/Developer/Xcode/DerivedData/jj-sotd-fiybdioifkqotfbtfcvtaqdhndcs/Build/Products/Debug-iphonesimulator/jj-sotd.app/Info.plist'
+
+
+Multiple commands produce '/Users/jonas/Library/Developer/Xcode/DerivedData/jj-sotd-fiybdioifkqotfbtfcvtaqdhndcs/Build/Products/Debug-iphonesimulator/jj-sotd.app/Info.plist'
+
+
+Build target jj-sotd of project jj-sotd with configuration Debug
+warning: duplicate output file '/Users/jonas/Library/Developer/Xcode/DerivedData/jj-sotd-fiybdioifkqotfbtfcvtaqdhndcs/Build/Products/Debug-iphonesimulator/jj-sotd.app/Info.plist' on task: ProcessInfoPlistFile /Users/jonas/Library/Developer/Xcode/DerivedData/jj-sotd-fiybdioifkqotfbtfcvtaqdhndcs/Build/Products/Debug-iphonesimulator/jj-sotd.app/Info.plist /Users/jonas/Library/Developer/Xcode/DerivedData/jj-sotd-fiybdioifkqotfbtfcvtaqdhndcs/Build/Intermediates.noindex/jj-sotd.build/Debug-iphonesimulator/jj-sotd.build/empty-jj-sotd.plist (in target 'jj-sotd' from project 'jj-sotd')
+
+
+duplicate output file '/Users/jonas/Library/Developer/Xcode/DerivedData/jj-sotd-fiybdioifkqotfbtfcvtaqdhndcs/Build/Products/Debug-iphonesimulator/jj-sotd.app/Info.plist' on task: ProcessInfoPlistFile /Users/jonas/Library/Developer/Xcode/DerivedData/jj-sotd-fiybdioifkqotfbtfcvtaqdhndcs/Build/Products/Debug-iphonesimulator/jj-sotd.app/Info.plist /Users/jonas/Library/Developer/Xcode/DerivedData/jj-sotd-fiybdioifkqotfbtfcvtaqdhndcs/Build/Intermediates.noindex/jj-sotd.build/Debug-iphonesimulator/jj-sotd.build/empty-jj-sotd.plist
+
+
+
+Build failed    7/20/25, 2:58 PM    2.2 seconds
