@@ -66,5 +66,5 @@ def get_track_info(track):
         "title": track["name"],
         "artist": ", ".join(artist["name"] for artist in track["artists"]),
         "album_art_url": track["album"]["images"][0]["url"] if track["album"]["images"] else "",
-        "audio_url": track["external_urls"]["spotify"],
+        "audio_url_spotify": track["external_urls"]["spotify"],
     }
