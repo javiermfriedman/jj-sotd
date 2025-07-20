@@ -1,20 +1,41 @@
 from spotify_utils import get_spotify_access_token
+from spotify_utils import get_playlist_tracks
+from spotify_utils import get_track_info
+from datetime import datetime
+from datetime import timedelta
+
+import pandas as pd
+
 
 def main():
-    while True:
-        print("\n🎵 What do you want to do?")
-        print("1) Generate Spotify Token")
-        print("2) Exit")
+    date = datetime.now()
+    token = get_spotify_access_token()
+    playlist_id =  "6H2PybSzZALVEJga7cgF8N"
+        # playlist_id = input("Enter the Spotify playlist ID: ").strip()
 
-        choice = input("Enter your choice (1/2): ").strip()
+    try:
+        print(f"🎧 Fetching tracks from playlist: {playlist_id}")
+        print(f"🎧 Using token: {token}")
 
-        if choice == "1":
-            get_spotify_access_token()
-        elif choice == "2":
-            print("👋 Goodbye!")
-            break
-        else:
-            print("⚠️ Invalid choice. Try again.")
+        tracks = get_playlist_tracks(playlist_id, token)
+
+        for i, track in enumerate(tracks, 1):
+            info = get_track_info(track)
+            info["id"] = date.strftime("%Y-%m-%d")
+            print(f"\n🔹 Track {i}:")
+            print(info)
+            date += timedelta(days=1) # increment date by 1 day
+    except Exception as e:
+        print(f"❌ Error fetching tracks: {e}")
+        return
+
+    df = pd.DataFrame(tracks)
+    df.to_csv("tracks.csv", index=False)
+    
+
+
+
+
 
 if __name__ == "__main__":
     main()
