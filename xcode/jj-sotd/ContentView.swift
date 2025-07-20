@@ -72,28 +72,6 @@ struct ContentView: View {
                             .font(.system(size: 18, weight: .medium, design: .rounded))
                             .foregroundColor(.white.opacity(0.9))
                             .frame(height: 22)
-                        
-                        Text(songService.currentSong?.album ?? "")
-                            .font(.system(size: 16, weight: .regular, design: .rounded))
-                            .foregroundColor(.white.opacity(0.7))
-                            .frame(height: 20)
-                        
-                        if let releaseYear = songService.currentSong?.releaseYear, !releaseYear.isEmpty {
-                            Text(releaseYear)
-                                .font(.system(size: 14, weight: .medium, design: .rounded))
-                                .foregroundColor(.white.opacity(0.6))
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 4)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color.white.opacity(0.2))
-                                )
-                                .frame(height: 28)
-                        } else {
-                            // Placeholder to maintain consistent spacing
-                            Color.clear
-                                .frame(height: 28)
-                        }
                     }
                     .padding(.horizontal, 20)
                 }

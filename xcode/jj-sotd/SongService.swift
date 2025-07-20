@@ -1,12 +1,12 @@
 import Foundation
+import Supabase
 
 class SongService: ObservableObject {
     @Published var currentSong: Song?
     @Published var isLoading = false
     @Published var errorMessage: String?
     
-    // TODO: Replace with your actual API endpoint
-    private let baseURL = "https://your-api-endpoint.com/api"
+    private let supabase = SupabaseManager.shared.supabase
     
     func fetchSongOfTheDay() async {
         await MainActor.run {
@@ -15,40 +15,36 @@ class SongService: ObservableObject {
         }
         
         do {
-            // TODO: Replace with actual API call
-            // For now, we'll use sample data
-            try await Task.sleep(nanoseconds: 1_500_000_000) // 1.5 seconds delay
+            // Get today's date in the format used in the database (YYYY-MM-DD)
+            let today = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let todayString = dateFormatter.string(from: today)
+            
+            // Fetch song for today from Supabase
+            let songs: [Song] = try await supabase
+                .from(Config.tracksTableName)
+                .select()
+                .eq("id", value: todayString)
+                .execute()
+                .value
             
             await MainActor.run {
-                self.currentSong = Song.random()
+                if let song = songs.first {
+                    self.currentSong = song
+                } else {
+                    // Fallback to sample data if no song found for today
+                    self.currentSong = Song.random()
+                }
                 self.isLoading = false
             }
-            
-            // Example of how the actual API call would look:
-            /*
-            guard let url = URL(string: "\(baseURL)/song-of-the-day") else {
-                throw URLError(.badURL)
-            }
-            
-            let (data, response) = try await URLSession.shared.data(from: url)
-            
-            guard let httpResponse = response as? HTTPURLResponse,
-                  httpResponse.statusCode == 200 else {
-                throw URLError(.badServerResponse)
-            }
-            
-            let song = try JSONDecoder().decode(Song.self, from: data)
-            
-            await MainActor.run {
-                self.currentSong = song
-                self.isLoading = false
-            }
-            */
             
         } catch {
             await MainActor.run {
                 self.errorMessage = error.localizedDescription
                 self.isLoading = false
+                // Fallback to sample data on error
+                self.currentSong = Song.random()
             }
         }
     }
