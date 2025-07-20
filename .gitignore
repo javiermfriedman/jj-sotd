@@ -3,3 +3,5 @@ build_backend/__pycache__/
 build_backend/venv/
 build_backend/.DS_Store
 build_backend/.env
+
+.DS_Store
