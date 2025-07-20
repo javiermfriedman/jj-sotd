@@ -1,7 +1,30 @@
-
+# ─── Python Backend (build_backend) ──────────────────────────────────────────────
 build_backend/__pycache__/
 build_backend/venv/
-build_backend/.DS_Store
 build_backend/.env
+build_backend/.DS_Store
 
+# Optional: Ignore CSVs if they are intermediate files (remove if you want to track)
+# build_backend/*.csv
+
+# ─── macOS System Files ──────────────────────────────────────────────────────────
 .DS_Store
+
+# ─── Xcode Project Files ─────────────────────────────────────────────────────────
+# Ignore per-user workspace settings and schemes
+xcode/**/*.xcuserdata/
+xcode/**/*.xcuserdatad/
+xcode/**/xcshareddata/WorkspaceSettings.xcsettings
+
+# Ignore build products and intermediate files
+xcode/**/*.xcworkspace/
+xcode/**/*.xcuserstate
+xcode/**/DerivedData/
+xcode/**/build/
+
+# ─── IDEs (optional) ─────────────────────────────────────────────────────────────
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
