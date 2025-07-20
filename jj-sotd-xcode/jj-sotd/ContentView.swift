@@ -88,6 +88,62 @@ struct ContentView: View {
                     .padding(.horizontal, 20)
                 }
                 
+                // Music platform buttons
+                if let song = songService.currentSong {
+                    VStack(spacing: 12) {
+                        Text("Listen on")
+                            .font(.system(size: 14, weight: .medium, design: .rounded))
+                            .foregroundColor(.white.opacity(0.7))
+                        
+                        HStack(spacing: 16) {
+                            // Apple Music
+                            MusicPlatformButton(
+                                icon: "AppleMusic",
+                                color: Color(red: 0.9, green: 0.3, blue: 0.3),
+                                action: {
+                                    if let url = song.generateAppleMusicURL() {
+                                        UIApplication.shared.open(url)
+                                    }
+                                }
+                            )
+                            
+                            // Spotify
+                            MusicPlatformButton(
+                                icon: "Spotify",
+                                color: Color(red: 0.2, green: 0.8, blue: 0.4),
+                                action: {
+                                    if let url = song.generateSpotifyURL() {
+                                        UIApplication.shared.open(url)
+                                    }
+                                }
+                            )
+                            
+                            // Amazon Music
+                            MusicPlatformButton(
+                                icon: "AmazonMusic",
+                                color: Color(red: 0.9, green: 0.7, blue: 0.2),
+                                action: {
+                                    if let url = song.generateAmazonMusicURL() {
+                                        UIApplication.shared.open(url)
+                                    }
+                                }
+                            )
+                            
+                            // YouTube
+                            MusicPlatformButton(
+                                icon: "YouTube",
+                                color: Color(red: 0.9, green: 0.2, blue: 0.2),
+                                action: {
+                                    if let url = song.generateYouTubeURL() {
+                                        UIApplication.shared.open(url)
+                                    }
+                                }
+                            )
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                }
+                
                 Spacer()
                 
                 // Action buttons
@@ -153,6 +209,29 @@ struct ContentView: View {
                     await songService.fetchSongOfTheDay()
                 }
             }
+        }
+    }
+}
+
+// Custom button component for music platforms
+struct MusicPlatformButton: View {
+    let icon: String
+    let color: Color
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            Image(icon)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40, height: 40)
+                .foregroundColor(.white)
+                .frame(width: 60, height: 60)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(color)
+                )
+                .shadow(color: color.opacity(0.3), radius: 8, x: 0, y: 4)
         }
     }
 }
