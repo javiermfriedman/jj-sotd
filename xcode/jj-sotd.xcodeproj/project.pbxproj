@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A8CFA202E33EE21004803FB /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = DDAAEA692E2D966900A8701A /* Supabase */; };
+		6A8CFA512E353934004803FB /* UIImageColors in Frameworks */ = {isa = PBXBuildFile; productRef = 6A8CFA502E353934004803FB /* UIImageColors */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A8CFA512E353934004803FB /* UIImageColors in Frameworks */,
 				6A8CFA202E33EE21004803FB /* Supabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +73,7 @@
 			name = "jj-sotd";
 			packageProductDependencies = (
 				DDAAEA692E2D966900A8701A /* Supabase */,
+				6A8CFA502E353934004803FB /* UIImageColors */,
 			);
 			productName = "jj-sotd";
 			productReference = DD23214F2E2D71C60007ED52 /* jj-sotd.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				DDAAEA682E2D966900A8701A /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				6A8CFA4F2E353934004803FB /* XCRemoteSwiftPackageReference "UIImageColors" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DD2321502E2D71C60007ED52 /* Products */;
@@ -335,6 +339,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6A8CFA4F2E353934004803FB /* XCRemoteSwiftPackageReference "UIImageColors" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jathu/UIImageColors";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 		DDAAEA682E2D966900A8701A /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/supabase/supabase-swift";
@@ -346,6 +358,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6A8CFA502E353934004803FB /* UIImageColors */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A8CFA4F2E353934004803FB /* XCRemoteSwiftPackageReference "UIImageColors" */;
+			productName = UIImageColors;
+		};
 		DDAAEA692E2D966900A8701A /* Supabase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DDAAEA682E2D966900A8701A /* XCRemoteSwiftPackageReference "supabase-swift" */;
