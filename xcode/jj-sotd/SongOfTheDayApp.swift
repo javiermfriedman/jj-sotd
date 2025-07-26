@@ -4,7 +4,7 @@ import SwiftUI
 struct SongOfTheDayApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
         }
     }
 }
