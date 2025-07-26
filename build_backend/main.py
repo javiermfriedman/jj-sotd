@@ -23,7 +23,6 @@ def main():
 
         for i, track in enumerate(tracks, 1):
             info = get_track_info(track)
-            info["id"] = date.strftime("%Y-%m-%d")
             info["audio_url_apple"] = ""
             info["audio_url_ytube"] = ""
             info["audio_url_amazon"] = ""
