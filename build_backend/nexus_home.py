@@ -1,7 +1,7 @@
 # nexus/nexus_home.py
 from adding_songs.add_single_song import add_song
 from adding_songs.add_from_playlist import add_songs
-from prune_oldest import delete
+from supabase_files.prune_oldest import delete
 from supabase_files.get_upcoming_songs import get_songs
 import os
 
@@ -42,6 +42,8 @@ def main():
             sys.exit(0)
         else:
             print("\n❌ Invalid choice. Please select a valid option.\n")
+
+        return
 
 if __name__ == "__main__":
     main()

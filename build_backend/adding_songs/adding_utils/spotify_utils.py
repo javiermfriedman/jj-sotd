@@ -1,6 +1,7 @@
 import base64
 import requests
 import os
+import re
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -57,8 +58,7 @@ def get_playlist_tracks(playlist_id, token):
     print(f"✅ Retrieved {len(tracks)} tracks from playlist.")
     return tracks
 
-
-def get_track_info(track):
+def get_track_info(track): # from playlist
     """
     Extracts and returns a dictionary of info matching Supabase song schema.
     """
@@ -68,3 +68,50 @@ def get_track_info(track):
         "album_art_url": track["album"]["images"][0]["url"] if track["album"]["images"] else "",
         "audio_url_spotify": track["external_urls"]["spotify"],
     }
+
+import requests
+
+def get_track(track_id: str, token: str) -> dict:
+    """
+    Fetch metadata for a single Spotify track by track ID.
+
+    Parameters:
+        track_id (str): The Spotify Track ID
+        token (str): Valid OAuth token with 'user-read-private' or appropriate scope
+
+    Returns:
+        dict: Track information (title, artist, album_art_url, spotify_url)
+    """
+    url = f"https://api.spotify.com/v1/tracks/{track_id}"
+    headers = {
+        "Authorization": f"Bearer {token}"
+    }
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code != 200:
+        raise Exception(f"Spotify API error {response.status_code}: {response.text}")
+
+    track = response.json()
+
+    return {
+        "title": track["name"],
+        "artist": track["artists"][0]["name"],
+        "album_art_url": track["album"]["images"][0]["url"] if track["album"]["images"] else None,
+        "audio_url_spotify": track["external_urls"]["spotify"]
+    }
+
+
+def extract_track_id(spotify_url: str) -> str | None:
+    """
+    Extracts the Spotify track ID from a Spotify track URL.
+    
+    Example:
+        https://open.spotify.com/track/0dSIrRkA4PadGll16TgbnV?si=2e01b3e92a094b73
+        → "0dSIrRkA4PadGll16TgbnV"
+
+    Returns None if no match is found.
+    """
+    match = re.search(r"spotify\.com/track/([a-zA-Z0-9]+)", spotify_url)
+    return match.group(1) if match else None
+

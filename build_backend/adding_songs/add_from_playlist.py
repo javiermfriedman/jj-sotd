@@ -7,7 +7,6 @@ add to suabse backend using insert song
 from .adding_utils.spotify_utils import get_spotify_access_token,get_track_info, get_playlist_tracks
 from .adding_utils.cross_platform_link_resolver import get_music_links
 from supabase_files.supabase_utils import insert_song
-from datetime import datetime, timedelta
 
 import pandas as pd
 
@@ -18,7 +17,7 @@ def add_songs(playlist_id = "6H2PybSzZALVEJga7cgF8N"):
 
     songs = []
     try:
-        print(f"🎧 Fetching tracks from playlist: {playlist_id}")
+        # print(f"🎧 Fetching tracks from playlist: {playlist_id}")
         # print(f"🎧 Using token: {token}")
 
         tracks = get_playlist_tracks(playlist_id, token)
@@ -35,7 +34,7 @@ def add_songs(playlist_id = "6H2PybSzZALVEJga7cgF8N"):
             info["audio_url_amazon"] = other_links["amazonMusic"]
 
 
-            print(f"\ninserting {info["title"]}")
+            print(f"- inserting {info["title"]}")
             insert_song(info)
 
             songs.append(info)
