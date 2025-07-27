@@ -1,5 +1,5 @@
 # ─── Python Backend (build_backend) ──────────────────────────────────────────────
-build_backend/__pycache__/
+__pycache__/
 build_backend/venv/
 build_backend/.env
 build_backend/.DS_Store
