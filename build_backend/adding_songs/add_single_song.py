@@ -23,7 +23,8 @@ def add_song():
         track["audio_url_amazon"] = other_links["amazonMusic"]
 
         response = insert_song(track)
-        print("✅ Inserted song:", response)
+        song = response.data[0]["title"]
+        print("✅ Inserted song:", song)
 
      
     except Exception as e:

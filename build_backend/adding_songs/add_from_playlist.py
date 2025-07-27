@@ -4,14 +4,24 @@ get other links using get music links
 add to suabse backend using insert song
 """
 
-from .adding_utils.spotify_utils import get_spotify_access_token,get_track_info, get_playlist_tracks
+from .adding_utils.spotify_utils import get_spotify_access_token,get_track_info, get_playlist_tracks, extract_playlist_id
 from .adding_utils.cross_platform_link_resolver import get_music_links
 from supabase_files.supabase_utils import insert_song
+from colorama import Fore, Style
 
 import pandas as pd
 
 
-def add_songs(playlist_id = "6H2PybSzZALVEJga7cgF8N"):
+def add_songs():
+    playlist_id = input(Fore.YELLOW + "give playlist id[press enter for default]: " + Style.RESET_ALL)
+    if playlist_id.strip() == "":
+        playlist_id = "6H2PybSzZALVEJga7cgF8N"
+    else:
+        playlist_id = extract_playlist_id(playlist_id)
+
+    print(f"🔧 Extracted playlist_id: {playlist_id}")
+
+
     token = get_spotify_access_token()
         # playlist_id = input("Enter the Spotify playlist ID: ").strip()
 

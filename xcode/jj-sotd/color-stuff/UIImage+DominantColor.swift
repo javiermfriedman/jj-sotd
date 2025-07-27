@@ -3,7 +3,7 @@ import SwiftUI
 
 extension UIImage {
     func dominantColor() -> UIColor? {
-        guard let cgImage = self.cgImage else { return nil }
+        guard self.cgImage != nil else { return nil }
 
         // Resize image to reduce computation
         let size = CGSize(width: 10, height: 10)

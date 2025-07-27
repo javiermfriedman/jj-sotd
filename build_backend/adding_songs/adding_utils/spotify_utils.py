@@ -115,3 +115,16 @@ def extract_track_id(spotify_url: str) -> str | None:
     match = re.search(r"spotify\.com/track/([a-zA-Z0-9]+)", spotify_url)
     return match.group(1) if match else None
 
+
+def extract_playlist_id(spotify_url: str) -> str | None:
+    """
+    Extracts the Spotify playlist ID from a Spotify playlist URL.
+    
+    Example:
+        https://open.spotify.com/playlist/6H2PybSzZALVEJga7cgF8N?si=xxxx
+        → "6H2PybSzZALVEJga7cgF8N"
+
+    Returns None if no match is found.
+    """
+    match = re.search(r"spotify\.com/playlist/([a-zA-Z0-9]+)", spotify_url)
+    return match.group(1) if match else None
